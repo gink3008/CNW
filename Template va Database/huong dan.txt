@@ -1,0 +1,7 @@
+
+Quy trinh 1:
+
+anh em lam chon form trong Template - Divisima
+Add controller va View de hien thi len. - Làm theo huong dan cua cô huong trên lop.
+
+DateLine : Truoc 9h toi ngay mai.
