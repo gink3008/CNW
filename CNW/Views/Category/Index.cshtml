@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="category-section spad">
+    <div class="container">
+        <div class="row">
+            @RenderPage("SlideBar.cshtml")
+            @RenderPage("CategoryBody.cshtml")
+        </div>
+    </div>
+</section>
+
