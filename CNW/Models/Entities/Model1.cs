@@ -23,6 +23,7 @@ namespace CNW.Models.Entities
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserAD> UserADs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -166,6 +167,24 @@ namespace CNW.Models.Entities
                 .Property(e => e.password)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<UserAD>()
+                .Property(e => e.id)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<UserAD>()
+                .Property(e => e.AdminID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<UserAD>()
+                .Property(e => e.username)
+                .IsFixedLength();
+
+            modelBuilder.Entity<UserAD>()
+                .Property(e => e.password)
+                .IsFixedLength();
         }
     }
 }

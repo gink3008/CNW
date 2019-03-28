@@ -3,12 +3,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@Model
 <section class="category-section spad">
     <div class="container">
         <div class="row">
-            @RenderPage("SlideBar.cshtml")
-            @RenderPage("CategoryBody.cshtml")
+            @RenderPage("SlideBar.cshtml",Model)
+            @RenderPage("CategoryBody.cshtml",Model)
         </div>
     </div>
 </section>

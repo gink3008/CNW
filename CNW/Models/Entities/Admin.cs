@@ -9,6 +9,12 @@ namespace CNW.Models.Entities
     [Table("Admin")]
     public partial class Admin
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Admin()
+        {
+            UserADs = new HashSet<UserAD>();
+        }
+
         [StringLength(10)]
         public string id { get; set; }
 
@@ -19,5 +25,8 @@ namespace CNW.Models.Entities
         public string ChucVuId { get; set; }
 
         public virtual ChucVu ChucVu { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserAD> UserADs { get; set; }
     }
 }
