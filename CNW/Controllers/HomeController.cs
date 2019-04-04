@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CNW.Models;
+using CNW.Models.Entities;
 
 namespace CNW.Controllers
 {
@@ -11,7 +13,9 @@ namespace CNW.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            ProductModel model = new ProductModel();
+            IEnumerable<SanPham> sanPhams = model.accessDatabase;
+            return View(sanPhams);
         }
     }
 }

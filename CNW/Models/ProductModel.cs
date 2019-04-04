@@ -12,18 +12,18 @@ namespace CNW.Models
         {
             context = new Model1();
         }
-        public IQueryable<SanPham> accessDatabase
+        public List<SanPham> accessDatabase
         {
-           get { return context.SanPhams;}
+           get { return context.SanPhams.ToList();}
         }
-        public SanPham FindSanPham(int MaSP)
+        public SanPham FindSanPham(int ID)
         {
-            return context.SanPhams.Find(MaSP);
+            return context.SanPhams.Find(ID);
         }
         public bool Insert(SanPham model)
         {
             SanPham dbSanPham = context.SanPhams.Find(model.id);
-            if (dbSanPham.id != null)
+            if (dbSanPham != null)
             {
                 return false;
             }
@@ -53,6 +53,10 @@ namespace CNW.Models
                 context.SanPhams.Remove(dbSanPham);
             }
             return false;
+        }
+        public void Save()
+        {
+            context.SaveChanges();
         }
     }
 }
