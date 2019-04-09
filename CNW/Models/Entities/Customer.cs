@@ -6,19 +6,19 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Anh")]
-    public partial class Anh
+    [Table("Customer")]
+    public partial class Customer
     {
         [StringLength(10)]
         public string id { get; set; }
 
-        [StringLength(200)]
-        public string url { get; set; }
-
         [Required]
-        [StringLength(10)]
-        public string SanPhamID { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
 
-        public virtual SanPham SanPham { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? DateofBirth { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

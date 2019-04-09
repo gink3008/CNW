@@ -9,6 +9,12 @@ namespace CNW.Models.Entities
     [Table("User")]
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            Bills = new HashSet<Bill>();
+        }
+
         [StringLength(10)]
         public string id { get; set; }
 
@@ -18,6 +24,9 @@ namespace CNW.Models.Entities
         [StringLength(20)]
         public string password { get; set; }
 
-        public virtual KhachHang KhachHang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bill> Bills { get; set; }
+
+        public virtual Customer Customer { get; set; }
     }
 }

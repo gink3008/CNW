@@ -1,31 +1,23 @@
-﻿@Model
+﻿@model IEnumerable<CNW.Models.Entities.Category>
 <div class="col-lg-3 order-2 order-lg-1">
     <div class="filter-widget">
         <h2 class="fw-title">Categories</h2>
         <ul class="category-menu">
-            <li class="">
-                <a href="#"></a>
-                <ul class="sub-menu">
-                    <li><a href="#">Midi Dresses <span>(2)</span></a></li>
-                    <li><a href="#">Maxi Dresses<span>(56)</span></a></li>
-                    <li><a href="#">Prom Dresses<span>(36)</span></a></li>
-                    <li><a href="#">Little Black Dresses <span>(27)</span></a></li>
-                    <li><a href="#">Mini Dresses<span>(19)</span></a></li>
-                </ul>
-            </li>
-            <li class="">
-                <a href="#">Man Wear</a>
-                <ul class="sub-menu">
-                    <li><a href="#">Midi Dresses <span>(2)</span></a></li>
-                    <li><a href="#">Maxi Dresses<span>(56)</span></a></li>
-                    <li><a href="#">Prom Dresses<span>(36)</span></a></li>
-                </ul>
-            </li>
-            <li class=""><a href="#">Children</a></li>
-            <li class=""><a href="#">Bags &amp; Purses</a></li>
-            <li class=""><a href="#">Eyewear</a></li>
-            <li class=""><a href="#">Footwear</a></li>
-        </ul>
+            @foreach (var item in Model)
+            {
+                    <li class="">
+                        <a href="#">@item.Name</a>
+                        <ul class="sub-menu">
+                            @foreach (var item2 in item.Species)
+                            {
+                                <li >
+                                    <a href="#"> @item2.Name <span>(2)</span></a>
+                            </li>
+                            }
+                        </ul>
+                </li>
+            }
+     
     </div>
     <div class="filter-widget mb-0">
         <h2 class="fw-title">refine by</h2>

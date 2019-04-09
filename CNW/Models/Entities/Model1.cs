@@ -13,17 +13,20 @@ namespace CNW.Models.Entities
         }
 
         public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<Anh> Anhs { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<ChiTietHD> ChiTietHDs { get; set; }
-        public virtual DbSet<ChucVu> ChucVus { get; set; }
-        public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<Loaisp> Loaisps { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<DetailBill> DetailBills { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<Posision> Posisions { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductDetail> ProductDetails { get; set; }
+        public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<Species> Species { get; set; }
+        public virtual DbSet<speciesSize> speciesSizes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UserAD> UserADs { get; set; }
+        public virtual DbSet<UserAdmin> UserAdmins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,120 +41,181 @@ namespace CNW.Models.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<Admin>()
-                .Property(e => e.ChucVuId)
+                .Property(e => e.positionID)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Anh>()
+            modelBuilder.Entity<Bill>()
                 .Property(e => e.id)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Anh>()
+            modelBuilder.Entity<Bill>()
+                .Property(e => e.customerID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Bill>()
+                .Property(e => e.paymentMethod)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Bill>()
+                .Property(e => e.userID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Bill>()
+                .HasMany(e => e.DetailBills)
+                .WithRequired(e => e.Bill)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Category>()
+                .Property(e => e.id)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.id)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .HasOptional(e => e.User)
+                .WithRequired(e => e.Customer);
+
+            modelBuilder.Entity<DetailBill>()
+                .Property(e => e.BiLLID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DetailBill>()
+                .Property(e => e.ProductID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Image>()
+                .Property(e => e.id)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Image>()
                 .Property(e => e.url)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Anh>()
-                .Property(e => e.SanPhamID)
+            modelBuilder.Entity<Image>()
+                .Property(e => e.ProductID)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Category>()
+            modelBuilder.Entity<Image>()
+                .HasMany(e => e.ProductDetails)
+                .WithRequired(e => e.Image)
+                .HasForeignKey(e => e.ProductID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Posision>()
                 .Property(e => e.id)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Category>()
-                .Property(e => e.name)
-                .IsFixedLength();
-
-            modelBuilder.Entity<ChiTietHD>()
-                .Property(e => e.HoaDonID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ChiTietHD>()
-                .Property(e => e.SanPhamID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ChucVu>()
-                .Property(e => e.id)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ChucVu>()
+            modelBuilder.Entity<Posision>()
                 .Property(e => e.Name)
                 .IsFixedLength();
 
-            modelBuilder.Entity<HoaDon>()
+            modelBuilder.Entity<Posision>()
+                .HasMany(e => e.Admins)
+                .WithOptional(e => e.Posision)
+                .HasForeignKey(e => e.positionID);
+
+            modelBuilder.Entity<Product>()
                 .Property(e => e.id)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<HoaDon>()
-                .Property(e => e.KhachHangID)
+            modelBuilder.Entity<Product>()
+                .Property(e => e.speciesID)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<HoaDon>()
-                .Property(e => e.HtttId)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<HoaDon>()
-                .HasMany(e => e.ChiTietHDs)
-                .WithRequired(e => e.HoaDon)
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.DetailBills)
+                .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<KhachHang>()
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.ProductDetails)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ProductDetail>()
+                .Property(e => e.ProductID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ProductDetail>()
+                .Property(e => e.SizeID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ProductDetail>()
+                .Property(e => e.ColorID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ProductDetail>()
+                .Property(e => e.Price)
+                .IsFixedLength();
+
+            modelBuilder.Entity<ProductDetail>()
+                .Property(e => e.ID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Size>()
                 .Property(e => e.id)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.HoaDons)
-                .WithRequired(e => e.KhachHang)
+            modelBuilder.Entity<Size>()
+                .Property(e => e.characters)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Size>()
+                .Property(e => e.speciesID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Size>()
+                .HasMany(e => e.ProductDetails)
+                .WithRequired(e => e.Size)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<KhachHang>()
-                .HasOptional(e => e.User)
-                .WithRequired(e => e.KhachHang);
-
-            modelBuilder.Entity<Loaisp>()
+            modelBuilder.Entity<Species>()
                 .Property(e => e.id)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Loaisp>()
-                .Property(e => e.CategoryID)
+            modelBuilder.Entity<Species>()
+                .Property(e => e.categoryID)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Loaisp>()
-                .HasMany(e => e.SanPhams)
-                .WithRequired(e => e.Loaisp)
+            modelBuilder.Entity<Species>()
+                .HasMany(e => e.Products)
+                .WithRequired(e => e.Species)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SanPham>()
+            modelBuilder.Entity<speciesSize>()
                 .Property(e => e.id)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SanPham>()
-                .Property(e => e.LoaispID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SanPham>()
-                .HasMany(e => e.Anhs)
-                .WithRequired(e => e.SanPham)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<SanPham>()
-                .HasMany(e => e.ChiTietHDs)
-                .WithRequired(e => e.SanPham)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<speciesSize>()
+                .HasMany(e => e.Sizes)
+                .WithOptional(e => e.speciesSize)
+                .HasForeignKey(e => e.speciesID);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.id)
@@ -168,23 +232,15 @@ namespace CNW.Models.Entities
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<UserAD>()
+            modelBuilder.Entity<UserAdmin>()
                 .Property(e => e.id)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<UserAD>()
+            modelBuilder.Entity<UserAdmin>()
                 .Property(e => e.AdminID)
                 .IsFixedLength()
                 .IsUnicode(false);
-
-            modelBuilder.Entity<UserAD>()
-                .Property(e => e.username)
-                .IsFixedLength();
-
-            modelBuilder.Entity<UserAD>()
-                .Property(e => e.password)
-                .IsFixedLength();
         }
     }
 }

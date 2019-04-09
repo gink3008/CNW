@@ -6,10 +6,10 @@ using System.Web;
 
 namespace CNW.Models
 {
-    public class CategoryModel
+    public class CategoryF
     {
         private Model1 context = null;
-        public CategoryModel()
+        public CategoryF()
         {
             context = new Model1();
         }

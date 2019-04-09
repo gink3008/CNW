@@ -7,7 +7,7 @@
 <section class="category-section spad">
     <div class="container">
         <div class="row">
-            @RenderPage("SlideBar.cshtml",Model)
+            @{Html.RenderAction("SlideBar", "Category");}
             @RenderPage("CategoryBody.cshtml",Model)
         </div>
     </div>

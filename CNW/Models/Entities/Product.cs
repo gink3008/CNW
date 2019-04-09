@@ -6,14 +6,14 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("SanPham")]
-    public partial class SanPham
+    [Table("Product")]
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SanPham()
+        public Product()
         {
-            Anhs = new HashSet<Anh>();
-            ChiTietHDs = new HashSet<ChiTietHD>();
+            DetailBills = new HashSet<DetailBill>();
+            ProductDetails = new HashSet<ProductDetail>();
         }
 
         [StringLength(10)]
@@ -25,22 +25,14 @@ namespace CNW.Models.Entities
 
         [Required]
         [StringLength(10)]
-        public string LoaispID { get; set; }
-
-        public int? Size { get; set; }
-
-        public int? Price { get; set; }
-
-        public string Description { get; set; }
-
-        public bool? Display { get; set; }
+        public string speciesID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Anh> Anhs { get; set; }
+        public virtual ICollection<DetailBill> DetailBills { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHD> ChiTietHDs { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
 
-        public virtual Loaisp Loaisp { get; set; }
+        public virtual Species Species { get; set; }
     }
 }

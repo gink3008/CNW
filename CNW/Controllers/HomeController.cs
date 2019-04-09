@@ -11,11 +11,18 @@ namespace CNW.Controllers
     public class HomeController : Controller
     {
         // GET: Home
+        
         public ActionResult Index()
         {
-            ProductModel model = new ProductModel();
-            IEnumerable<SanPham> sanPhams = model.accessDatabase;
+            ProductF model = new ProductF();
+            IEnumerable<Product> sanPhams = model.accessDatabase;
             return View(sanPhams);
+        }
+        public ActionResult HeroSection()
+        {
+            ProductF productf = new ProductF();
+            IEnumerable<Product> model = productf.accessDatabase;
+            return PartialView(model);
         }
     }
 }

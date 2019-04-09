@@ -15,11 +15,25 @@ namespace CNW.Controllers
             return View();
         }
         [ChildActionOnly]
-        public ActionResult View()
+        public ActionResult Banner()
         {
-            ProductModel context = new ProductModel();
-            List<SanPham> model = context.accessDatabase;
+            ProductF context = new ProductF();
+            List<Product> model = context.accessDatabase;
             return PartialView(model);
+        }
+        [ChildActionOnly]
+        public ActionResult DetailProduct()
+        {
+            ProductDetailF detail = new ProductDetailF();
+            IEnumerable<ProductDetail> model = detail.accessDatabase;
+            return PartialView("DetailProduct",model);
+        }
+        [ChildActionOnly]
+        public ActionResult ImageProduct()
+        {
+            ProductImageF image = new ProductImageF();
+            IEnumerable<Image> model = image.accessDatabase;
+            return PartialView("ImageProduct",model);
         }
     }
 }

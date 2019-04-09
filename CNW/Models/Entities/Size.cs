@@ -6,27 +6,27 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Admin")]
-    public partial class Admin
+    [Table("Size")]
+    public partial class Size
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Admin()
+        public Size()
         {
-            UserAdmins = new HashSet<UserAdmin>();
+            ProductDetails = new HashSet<ProductDetail>();
         }
 
-        [StringLength(10)]
+        [StringLength(3)]
         public string id { get; set; }
 
-        [StringLength(10)]
-        public string nameAdmin { get; set; }
+        [StringLength(3)]
+        public string characters { get; set; }
 
         [StringLength(10)]
-        public string positionID { get; set; }
-
-        public virtual Posision Posision { get; set; }
+        public string speciesID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAdmin> UserAdmins { get; set; }
+        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+
+        public virtual speciesSize speciesSize { get; set; }
     }
 }

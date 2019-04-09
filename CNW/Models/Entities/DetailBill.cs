@@ -6,27 +6,25 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ChiTietHD")]
-    public partial class ChiTietHD
+    [Table("DetailBill")]
+    public partial class DetailBill
     {
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]
-        public string HoaDonID { get; set; }
+        public string BiLLID { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [StringLength(10)]
-        public string SanPhamID { get; set; }
+        public string ProductID { get; set; }
 
-        public int? DonGia { get; set; }
+        public int? totalPrice { get; set; }
 
-        public int? Tong { get; set; }
+        public int? quality { get; set; }
 
-        public DateTime? NgayMua { get; set; }
+        public virtual Bill Bill { get; set; }
 
-        public virtual HoaDon HoaDon { get; set; }
-
-        public virtual SanPham SanPham { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

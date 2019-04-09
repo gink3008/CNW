@@ -6,20 +6,17 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("UserAD")]
-    public partial class UserAD
+    [Table("UserAdmin")]
+    public partial class UserAdmin
     {
-        [StringLength(10)]
+        [StringLength(20)]
         public string id { get; set; }
 
         [StringLength(10)]
         public string AdminID { get; set; }
 
-        [StringLength(40)]
-        public string username { get; set; }
-
-        [StringLength(40)]
-        public string password { get; set; }
+        [StringLength(50)]
+        public string Password { get; set; }
 
         public virtual Admin Admin { get; set; }
     }

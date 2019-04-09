@@ -6,29 +6,22 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("HoaDon")]
-    public partial class HoaDon
+    [Table("Posision")]
+    public partial class Posision
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HoaDon()
+        public Posision()
         {
-            ChiTietHDs = new HashSet<ChiTietHD>();
+            Admins = new HashSet<Admin>();
         }
 
         [StringLength(10)]
         public string id { get; set; }
 
-        [Required]
         [StringLength(10)]
-        public string KhachHangID { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string HtttId { get; set; }
+        public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietHD> ChiTietHDs { get; set; }
-
-        public virtual KhachHang KhachHang { get; set; }
+        public virtual ICollection<Admin> Admins { get; set; }
     }
 }

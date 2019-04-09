@@ -414,24 +414,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\ChiTietHDMoldel.cs" />
+    <Compile Include="Models\CategoryF.cs" />
+    <Compile Include="Models\DetailBillF.cs" />
+    <Compile Include="Models\BillF.cs" />
     <Compile Include="Models\Entities\Admin.cs" />
-    <Compile Include="Models\Entities\Anh.cs" />
+    <Compile Include="Models\Entities\Bill.cs" />
     <Compile Include="Models\Entities\Category.cs" />
-    <Compile Include="Models\Entities\ChiTietHD.cs" />
-    <Compile Include="Models\Entities\ChucVu.cs" />
-    <Compile Include="Models\Entities\HoaDon.cs" />
-    <Compile Include="Models\Entities\KhachHang.cs" />
-    <Compile Include="Models\Entities\Loaisp.cs" />
+    <Compile Include="Models\Entities\Customer.cs" />
+    <Compile Include="Models\Entities\DetailBill.cs" />
+    <Compile Include="Models\Entities\Image.cs" />
     <Compile Include="Models\Entities\Model1.cs" />
-    <Compile Include="Models\Entities\SanPham.cs" />
+    <Compile Include="Models\Entities\Posision.cs" />
+    <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Entities\ProductDetail.cs" />
+    <Compile Include="Models\Entities\Size.cs" />
+    <Compile Include="Models\Entities\Species.cs" />
+    <Compile Include="Models\Entities\speciesSize.cs" />
     <Compile Include="Models\Entities\sysdiagram.cs" />
     <Compile Include="Models\Entities\User.cs" />
-    <Compile Include="Models\Entities\UserAD.cs" />
-    <Compile Include="Models\HoaDonModel.cs" />
-    <Compile Include="Models\LoaiSPModel.cs" />
-    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\Entities\UserAdmin.cs" />
+    <Compile Include="Models\ProductDetailF.cs" />
+    <Compile Include="Models\ProductImageF.cs" />
+    <Compile Include="Models\SpeciesF.cs" />
+    <Compile Include="Models\ProductF.cs" />
     <Compile Include="Models\Session\SessionHelper.cs" />
     <Compile Include="Models\Session\UserSesssion.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
@@ -575,9 +580,12 @@
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\SlideBar.cshtml" />
     <Content Include="Views\Category\CategoryBody.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\View.cshtml" />
+    <Content Include="Views\Product\Banner.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\HeroSection.cshtml" />
+    <Content Include="Views\Product\DetailProduct.cshtml" />
+    <Content Include="Views\Product\ImageProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

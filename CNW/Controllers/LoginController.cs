@@ -17,20 +17,19 @@ namespace CNW.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(User user)
+        public ActionResult Index(UserAdmin useradmin)
         {
-            var results = new UserLoginModel().Login(user.username, user.password);
+            var results = new UserLoginModel().Login(useradmin.id, useradmin.Password);
             if(results && ModelState.IsValid)
             {
-                SessionHelper.setSession(new UserSesssion() { Username = user.username });
+                SessionHelper.setSession(new UserSesssion() { Username = useradmin.id });
                 return RedirectToAction("Home", "Index");
             }
             else
             {
                 ModelState.AddModelError("", "Ten dang nhap hoac mat khau khong dung");
             }
-            return View(user);
+            return View(useradmin);
         }
     }
 }

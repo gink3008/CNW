@@ -6,13 +6,12 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("KhachHang")]
-    public partial class KhachHang
+    public partial class Species
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KhachHang()
+        public Species()
         {
-            HoaDons = new HashSet<HoaDon>();
+            Products = new HashSet<Product>();
         }
 
         [StringLength(10)]
@@ -22,12 +21,12 @@ namespace CNW.Models.Entities
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? DateofBirth { get; set; }
+        [StringLength(10)]
+        public string categoryID { get; set; }
+
+        public virtual Category Category { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
-
-        public virtual User User { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

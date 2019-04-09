@@ -1,4 +1,4 @@
-﻿@model List<CNW.Models.Entities.SanPham>
+﻿@model List<CNW.Models.Entities.Product>
 <div class="related-product-section">
     <div class="container">
         <div class="section-title">
@@ -7,9 +7,10 @@
        
             <div class="product-slider owl-carousel owl-loaded owl-drag">
                 <div class="owl-stage-outer">
-                        <div class="owl-stage" style="transform: translate3d(-2056px, 0px, 0px); transition: all 0.25s ease 0s; width: 3819px;">
+                    <div class="owl-stage" style="transform: translate3d(-2056px, 0px, 0px); transition: all 0.25s ease 0s; width: 3819px;">
+                        @foreach (var item in Model)
+                        {
                             <div class="owl-item cloned" style="width: 263.75px; margin-right: 30px;">
-
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         <div class="tag-new">New</div>
@@ -20,11 +21,12 @@
                                         </div>
                                     </div>
                                     <div class="pi-text">
-                                        <h6>$23</h6>
-                                        <p>gasdf</p>
+                                        <h6>@item.Price</h6>
+                                        <p>@item.Name</p>
                                     </div>
                                 </div>
                             </div>
+                        }
                         </div>
                     </div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="flaticon-left-arrow-1"></i></button><button type="button" role="presentation" class="owl-next"><i class="flaticon-right-arrow-1"></i></button></div><div class="owl-dots disabled"></div>
             </div>
