@@ -10,9 +10,9 @@ namespace CNW.Controllers
     public class ProductController : Controller
     {
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(ProductDetail Pdetail)
         {
-            return View();
+            return View(Pdetail);
         }
         [ChildActionOnly]
         public ActionResult Banner()
@@ -22,18 +22,15 @@ namespace CNW.Controllers
             return PartialView(model);
         }
         [ChildActionOnly]
-        public ActionResult DetailProduct()
+        public ActionResult DetailProduct(ProductDetail Pdetail)
         {
-            ProductDetailF detail = new ProductDetailF();
-            IEnumerable<ProductDetail> model = detail.accessDatabase;
-            return PartialView("DetailProduct",model);
+            return PartialView("DetailProduct", Pdetail);
         }
         [ChildActionOnly]
-        public ActionResult ImageProduct()
+        public ActionResult ImageProduct(ProductDetail Pdetail)
         {
-            ProductImageF image = new ProductImageF();
-            IEnumerable<Image> model = image.accessDatabase;
-            return PartialView("ImageProduct",model);
+            IEnumerable<Image> model = new ProductImageF().accessDatabase.Where(x => x.ProductID == Pdetail.ID);
+            return PartialView("ImageProduct", model);
         }
     }
 }

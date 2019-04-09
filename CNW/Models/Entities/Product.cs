@@ -13,7 +13,6 @@ namespace CNW.Models.Entities
         public Product()
         {
             DetailBills = new HashSet<DetailBill>();
-            ProductDetails = new HashSet<ProductDetail>();
         }
 
         [StringLength(10)]
@@ -27,11 +26,12 @@ namespace CNW.Models.Entities
         [StringLength(10)]
         public string speciesID { get; set; }
 
+        public int? Price { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailBill> DetailBills { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual ProductDetail ProductDetail { get; set; }
 
         public virtual Species Species { get; set; }
     }

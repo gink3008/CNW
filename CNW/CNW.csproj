@@ -420,6 +420,7 @@
     <Compile Include="Models\Entities\Admin.cs" />
     <Compile Include="Models\Entities\Bill.cs" />
     <Compile Include="Models\Entities\Category.cs" />
+    <Compile Include="Models\Entities\Color.cs" />
     <Compile Include="Models\Entities\Customer.cs" />
     <Compile Include="Models\Entities\DetailBill.cs" />
     <Compile Include="Models\Entities\Image.cs" />

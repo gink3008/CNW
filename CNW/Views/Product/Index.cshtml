@@ -1,4 +1,4 @@
-﻿
+﻿@model CNW.Models.Entities.Product
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,12 +8,12 @@
 <div class="product-section">
     <div class="container">
         <div class="back-link">
-            <a href="./category.html"> &lt;&lt; Back to Category</a>
+            <a href="/Category"> &lt;&lt; Back to Category</a>
         </div>
 
         <div class="row">
-           @{ Html.RenderAction("ImageProduct", "Product"); }
-           @{ Html.RenderAction("DetailProduct", "Product"); }
+           @{ Html.RenderAction("ImageProduct", "Product",new {Pdetail = Model.ProductDetails }); }
+           @{ Html.RenderAction("DetailProduct", "Product" , new { Pdetail = Model.ProductDetails}); }
         </div>
     </div>
 </div>

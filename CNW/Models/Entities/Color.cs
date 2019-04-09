@@ -6,25 +6,20 @@ namespace CNW.Models.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Size")]
-    public partial class Size
+    [Table("Color")]
+    public partial class Color
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Size()
+        public Color()
         {
             ProductDetails = new HashSet<ProductDetail>();
         }
 
-        [StringLength(3)]
-        public string id { get; set; }
-
-        [StringLength(3)]
-        public string characters { get; set; }
+        [StringLength(10)]
+        public string ID { get; set; }
 
         [StringLength(10)]
-        public string speciesID { get; set; }
-
-        public virtual speciesSize speciesSize { get; set; }
+        public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductDetail> ProductDetails { get; set; }

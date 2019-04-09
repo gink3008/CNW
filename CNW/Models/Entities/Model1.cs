@@ -15,6 +15,7 @@ namespace CNW.Models.Entities
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<DetailBill> DetailBills { get; set; }
         public virtual DbSet<Image> Images { get; set; }
@@ -75,6 +76,20 @@ namespace CNW.Models.Entities
                 .IsFixedLength()
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Color>()
+                .Property(e => e.ID)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Color>()
+                .Property(e => e.Name)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Color>()
+                .HasMany(e => e.ProductDetails)
+                .WithMany(e => e.Colors)
+                .Map(m => m.ToTable("ProductColor").MapLeftKey("ColorID").MapRightKey("ProductID"));
+
             modelBuilder.Entity<Customer>()
                 .Property(e => e.id)
                 .IsFixedLength()
@@ -110,9 +125,8 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<Image>()
                 .HasMany(e => e.ProductDetails)
-                .WithRequired(e => e.Image)
-                .HasForeignKey(e => e.ProductID)
-                .WillCascadeOnDelete(false);
+                .WithMany(e => e.Images)
+                .Map(m => m.ToTable("ProductImage").MapLeftKey("ImageID").MapRightKey("ProductID"));
 
             modelBuilder.Entity<Posision>()
                 .Property(e => e.id)
@@ -144,9 +158,8 @@ namespace CNW.Models.Entities
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
-                .HasMany(e => e.ProductDetails)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
+                .HasOptional(e => e.Species)
+                .WithRequired(e => e.Product);
 
             modelBuilder.Entity<ProductDetail>()
                 .Property(e => e.ProductID)
@@ -154,23 +167,13 @@ namespace CNW.Models.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<ProductDetail>()
-                .Property(e => e.SizeID)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasOptional(e => e.Product)
+                .WithRequired(e => e.ProductDetail);
 
             modelBuilder.Entity<ProductDetail>()
-                .Property(e => e.ColorID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ProductDetail>()
-                .Property(e => e.Price)
-                .IsFixedLength();
-
-            modelBuilder.Entity<ProductDetail>()
-                .Property(e => e.ID)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasMany(e => e.Sizes)
+                .WithMany(e => e.ProductDetails)
+                .Map(m => m.ToTable("ProductSize").MapLeftKey("ProductID").MapRightKey("SizeID"));
 
             modelBuilder.Entity<Size>()
                 .Property(e => e.id)
@@ -187,11 +190,6 @@ namespace CNW.Models.Entities
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Size>()
-                .HasMany(e => e.ProductDetails)
-                .WithRequired(e => e.Size)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Species>()
                 .Property(e => e.id)
                 .IsFixedLength()
@@ -201,11 +199,6 @@ namespace CNW.Models.Entities
                 .Property(e => e.categoryID)
                 .IsFixedLength()
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Species>()
-                .HasMany(e => e.Products)
-                .WithRequired(e => e.Species)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<speciesSize>()
                 .Property(e => e.id)
