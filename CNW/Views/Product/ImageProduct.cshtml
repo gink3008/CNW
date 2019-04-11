@@ -1,17 +1,14 @@
-﻿@model List<CNW.Models.Entities.Image>
+﻿@model IEnumerable<CNW.Models.Entities.Image>
 <div class="col-lg-6">
     <div class="product-pic-zoom" style="position: relative; overflow: hidden;">
         <img class="product-big-img" src="~/Content/img/single-product/1.jpg" alt="">
         <img role="presentation" alt="" src="file:///D:/HIEP/CNW/divisima%20-%20Copy/~/Content/img/single-product/1.jpg" class="zoomImg" style="position: absolute; top: -387.497px; left: -18.3879px; opacity: 0; width: 1000px; height: 1358px; border: medium none; max-width: none; max-height: none;">
     </div>
     <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+       
         <div class="product-thumbs-track">
-            @foreach (var item in Model)
-            {
-                <div class="pt active" data-imgbigurl="@item.url"><img src="~/Content/img/single-product/thumb-1.jpg" alt=""></div>
-            }
-
-
+            
+                <div class="pt active" data-imgbigurl="/Content/img/product/1.jpg"><img src="~/Content/img/product/1.jpg" alt=""></div>
         </div>
     </div>
 </div>

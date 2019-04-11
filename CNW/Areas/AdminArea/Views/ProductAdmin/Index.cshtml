@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<CNW.Models.Entities.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_layout_admin.cshtml";
+}
+@section Find{
+    <form class="form-header" action="" method="POST">
+        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+        <button class="au-btn--submit" type="submit">
+            <i class="zmdi zmdi-search"></i>
+        </button>
+    </form>
+}
+<h2>Index</h2>
+
+<p>
+    <a href="/AdminArea/ProductAdmin/Create">Create</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            SpeciesName
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Species.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a href="/AdminArea/ProductAdmin/Edit/@item.id">Edit</a> |
+                <a href="/AdminArea/ProductAdmin/Details/@item.id">Details</a> |
+                <a href="/AdminArea/ProductAdmin/Delete/@item.id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, Page => Url.Action("Index",new { Page }))

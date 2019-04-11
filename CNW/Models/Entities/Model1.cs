@@ -123,11 +123,6 @@ namespace CNW.Models.Entities
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Image>()
-                .HasMany(e => e.ProductDetails)
-                .WithMany(e => e.Images)
-                .Map(m => m.ToTable("ProductImage").MapLeftKey("ImageID").MapRightKey("ProductID"));
-
             modelBuilder.Entity<Posision>()
                 .Property(e => e.id)
                 .IsFixedLength()
@@ -158,8 +153,9 @@ namespace CNW.Models.Entities
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
-                .HasOptional(e => e.Species)
-                .WithRequired(e => e.Product);
+                .HasMany(e => e.ProductDetails)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProductDetail>()
                 .Property(e => e.ProductID)
@@ -167,8 +163,15 @@ namespace CNW.Models.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<ProductDetail>()
-                .HasOptional(e => e.Product)
-                .WithRequired(e => e.ProductDetail);
+                .Property(e => e.Id)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ProductDetail>()
+                .HasMany(e => e.Images)
+                .WithRequired(e => e.ProductDetail)
+                .HasForeignKey(e => e.ProductID)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ProductDetail>()
                 .HasMany(e => e.Sizes)
@@ -199,6 +202,11 @@ namespace CNW.Models.Entities
                 .Property(e => e.categoryID)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Species>()
+                .HasMany(e => e.Products)
+                .WithRequired(e => e.Species)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<speciesSize>()
                 .Property(e => e.id)

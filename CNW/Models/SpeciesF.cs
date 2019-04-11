@@ -17,7 +17,7 @@ namespace CNW.Models
         {
             get { return context.Species; }
         }
-        public Species FindSpecies(int ID)
+        public Species FindSpecies(string ID)
         {
             return context.Species.Find(ID);
         }

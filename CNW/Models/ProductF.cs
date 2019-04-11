@@ -16,7 +16,7 @@ namespace CNW.Models
         {
            get { return context.Products.ToList();}
         }
-        public Product FindProduct(int ID)
+        public Product FindProduct(string ID)
         {
             return context.Products.Find(ID);
         }
@@ -30,6 +30,7 @@ namespace CNW.Models
             else
             {
                 context.Products.Add(model);
+                context.SaveChanges();
                 return true;
             }
             return false;
@@ -40,23 +41,25 @@ namespace CNW.Models
             if (dbProduct != null)
             {
                 dbProduct.Name = model.Name;
-
+                context.SaveChanges();
+                return true;
             }
          
             return false;
         }
-        public bool Delete(Product model)
+        public bool Delete(string id)
         {
-            Product dbProduct = context.Products.Find(model.id);
+            Product dbProduct = context.Products.Find(id);
             if (dbProduct != null)
             {
                 context.Products.Remove(dbProduct);
+                context.SaveChanges();
             }
             return false;
         }
         public void Save()
         {
-            context.SaveChanges();
+            
         }
     }
 }

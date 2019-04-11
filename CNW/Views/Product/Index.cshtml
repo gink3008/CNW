@@ -1,4 +1,4 @@
-﻿@model CNW.Models.Entities.Product
+﻿@model CNW.Models.Entities.ProductDetail
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,8 +12,8 @@
         </div>
 
         <div class="row">
-           @{ Html.RenderAction("ImageProduct", "Product",new {Pdetail = Model.ProductDetails }); }
-           @{ Html.RenderAction("DetailProduct", "Product" , new { Pdetail = Model.ProductDetails}); }
+           @{ Html.RenderAction("ImageProduct", "Product"/*new {Pdetail = Model}*/); }
+           @{ Html.RenderAction("DetailProduct", "Product"); }
         </div>
     </div>
 </div>

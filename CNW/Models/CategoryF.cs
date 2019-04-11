@@ -13,7 +13,7 @@ namespace CNW.Models
         {
             context = new Model1();
         }
-        public IQueryable<Category> accessDatabase
+        public IEnumerable<Category> accessDatabase
         {
             get { return context.Categories; }
         }

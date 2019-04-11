@@ -8,12 +8,6 @@ namespace CNW.Models.Entities
 
     public partial class Image
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Image()
-        {
-            ProductDetails = new HashSet<ProductDetail>();
-        }
-
         [StringLength(10)]
         public string id { get; set; }
 
@@ -24,7 +18,8 @@ namespace CNW.Models.Entities
         [StringLength(10)]
         public string ProductID { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public bool? Official { get; set; }
+
+        public virtual ProductDetail ProductDetail { get; set; }
     }
 }

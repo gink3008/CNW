@@ -1,25 +1,25 @@
-﻿@model List<CNW.Models.Entities.Product>
-<div class="hero-section">
+﻿@model IEnumerable<CNW.Models.Entities.Image>
+<section class="hero-section">
     <div class="hero-slider owl-carousel owl-loaded owl-drag">
         <div class="owl-stage-outer">
             <div class="owl-stage" style="transform: translate3d(-3806px, 0px, 0px); transition: all 0s ease 0s; width: 11418px;">
                 @foreach (var item in Model)
                 {
                     <div class="owl-item cloned" style="width: 1903px;">
-                        <div class="hs-item set-bg" data-setbg="/Content/img/bg.jpg" style="background-image: url(&quot;img/bg.jpg&quot;);">
+                        <div class="hs-item set-bg" data-setbg="/Content/img/product/1.jpg" style="background-image: url(&quot;/Content/img/bg.jpg&quot;);">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-7 text-white">
                                         <span>New Arrivals</span>
-                                        <h2>@item.Name</h2>
-                                        <p>@item.</p>
+                                        <h2>@item.ProductDetail.Product.Name</h2>
+                                        <p>@item.ProductDetail.Description</p>
                                         <a href="#" class="site-btn sb-line">DISCOVER</a>
-                                        <a href="#" class="site-btn sb-white">ADD TO CART</a>
+                                        <a href="/Product/Index/@item.id" class="site-btn sb-white">ADD TO CART</a>
                                     </div>
                                 </div>
                                 <div class="offer-card text-white">
                                     <span>from</span>
-                                    <h2>$@item.Price</h2>
+                                    <h2>$@item.ProductDetail.Product.Price</h2>
                                     <p>SHOP NOW</p>
                                 </div>
                             </div>
@@ -32,4 +32,4 @@
     <div class="container">
         <div class="slide-num-holder" id="snh-1"><span> 1</span><span>2</span></div>
     </div>
-</div>
+</section>

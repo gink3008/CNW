@@ -51,6 +51,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -312,6 +318,7 @@
     <Content Include="Content\Login\vendor\select2\select2.js" />
     <Content Include="Content\Login\vendor\select2\select2.min.css" />
     <Content Include="Content\Login\vendor\select2\select2.min.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -396,56 +403,9 @@
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
-    <Compile Include="Areas\AdminArea\Controllers\IndexController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\CheckoutController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CategoryF.cs" />
-    <Compile Include="Models\DetailBillF.cs" />
-    <Compile Include="Models\BillF.cs" />
-    <Compile Include="Models\Entities\Admin.cs" />
-    <Compile Include="Models\Entities\Bill.cs" />
-    <Compile Include="Models\Entities\Category.cs" />
-    <Compile Include="Models\Entities\Color.cs" />
-    <Compile Include="Models\Entities\Customer.cs" />
-    <Compile Include="Models\Entities\DetailBill.cs" />
-    <Compile Include="Models\Entities\Image.cs" />
-    <Compile Include="Models\Entities\Model1.cs" />
-    <Compile Include="Models\Entities\Posision.cs" />
-    <Compile Include="Models\Entities\Product.cs" />
-    <Compile Include="Models\Entities\ProductDetail.cs" />
-    <Compile Include="Models\Entities\Size.cs" />
-    <Compile Include="Models\Entities\Species.cs" />
-    <Compile Include="Models\Entities\speciesSize.cs" />
-    <Compile Include="Models\Entities\sysdiagram.cs" />
-    <Compile Include="Models\Entities\User.cs" />
-    <Compile Include="Models\Entities\UserAdmin.cs" />
-    <Compile Include="Models\ProductDetailF.cs" />
-    <Compile Include="Models\ProductImageF.cs" />
-    <Compile Include="Models\SpeciesF.cs" />
-    <Compile Include="Models\ProductF.cs" />
-    <Compile Include="Models\Session\SessionHelper.cs" />
-    <Compile Include="Models\Session\UserSesssion.cs" />
-    <Compile Include="Models\UserLoginModel.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\web.config" />
-    <Content Include="Areas\AdminArea\Views\web.config" />
+    <Content Include="ClassDiagram1.cd" />
+    <Content Include="Areas\AdminArea\Views\Shared\_layout_admin.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Shared\SlideBar.cshtml" />
     <Content Include="Areas\AdminArea\Contents\fonts\poppins\poppins-v5-latin-100.eot" />
     <Content Include="Areas\AdminArea\Contents\fonts\poppins\poppins-v5-latin-100.ttf" />
     <Content Include="Areas\AdminArea\Contents\fonts\poppins\poppins-v5-latin-100.woff" />
@@ -549,8 +509,69 @@
     <Content Include="Areas\AdminArea\Contents\vendor\slick\slick-theme.scss" />
     <Content Include="Areas\AdminArea\Contents\vendor\slick\slick.less" />
     <Content Include="Areas\AdminArea\Contents\vendor\slick\slick.scss" />
-    <Content Include="Areas\AdminArea\Views\Shared\_Layout_Admin.cshtml" />
-    <Content Include="Areas\AdminArea\Views\Index\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ProductAdmin\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ProductAdmin\Details.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ProductAdmin\Create.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ProductAdmin\Edit.cshtml" />
+    <Content Include="Areas\AdminArea\Views\PDAdmin\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ProductAdmin\Delete.cshtml" />
+    <Content Include="Areas\AdminArea\Views\PDAdmin\Details.cshtml" />
+    <Content Include="Areas\AdminArea\Views\PDAdmin\Edit.cshtml" />
+    <Content Include="Areas\AdminArea\Views\PDAdmin\Delete.cshtml" />
+    <Content Include="Areas\AdminArea\Views\PDAdmin\Create.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\AdminController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\ProductAdminController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\PDAdminController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoryF.cs" />
+    <Compile Include="Models\DetailBillF.cs" />
+    <Compile Include="Models\BillF.cs" />
+    <Compile Include="Models\Entities\Admin.cs" />
+    <Compile Include="Models\Entities\Bill.cs" />
+    <Compile Include="Models\Entities\Category.cs" />
+    <Compile Include="Models\Entities\Color.cs" />
+    <Compile Include="Models\Entities\Customer.cs" />
+    <Compile Include="Models\Entities\DetailBill.cs" />
+    <Compile Include="Models\Entities\Image.cs" />
+    <Compile Include="Models\Entities\Model1.cs" />
+    <Compile Include="Models\Entities\Posision.cs" />
+    <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Entities\ProductDetail.cs" />
+    <Compile Include="Models\Entities\Size.cs" />
+    <Compile Include="Models\Entities\Species.cs" />
+    <Compile Include="Models\Entities\speciesSize.cs" />
+    <Compile Include="Models\Entities\sysdiagram.cs" />
+    <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\Entities\UserAdmin.cs" />
+    <Compile Include="Models\ProductDetailF.cs" />
+    <Compile Include="Models\ProductImageF.cs" />
+    <Compile Include="Models\SpeciesF.cs" />
+    <Compile Include="Models\ProductF.cs" />
+    <Compile Include="Models\Session\SessionHelper.cs" />
+    <Compile Include="Models\Session\UserSesssion.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\AdminArea\Views\web.config" />
+    <Content Include="Areas\AdminArea\Views\Admin\Index.cshtml" />
     <Content Include="Content\icon-fonts\Flaticon.eot" />
     <Content Include="Content\icon-fonts\Flaticon.ttf" />
     <Content Include="Content\icon-fonts\Flaticon.woff" />
@@ -584,9 +605,9 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Banner.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Home\HeroSection.cshtml" />
     <Content Include="Views\Product\DetailProduct.cshtml" />
     <Content Include="Views\Product\ImageProduct.cshtml" />
+    <Content Include="Views\Home\HeroSection.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -597,6 +618,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminArea\Models\" />
+    <Folder Include="Areas\AdminArea\Views\ProductDetail\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,6 +8,12 @@ namespace CNW.Models.Entities
 
     public partial class Species
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Species()
+        {
+            Products = new HashSet<Product>();
+        }
+
         [StringLength(10)]
         public string id { get; set; }
 
@@ -20,6 +26,7 @@ namespace CNW.Models.Entities
 
         public virtual Category Category { get; set; }
 
-        public virtual Product Product { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

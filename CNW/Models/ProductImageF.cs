@@ -13,13 +13,13 @@ namespace CNW.Models
         {
             context = new Model1();
         }
-        public List<Image> accessDatabase
+        public IEnumerable<Image> accessDatabase
         {
-            get { return context.Images.ToList(); }
+            get { return context.Images; }
         }
-        public Image FindImage(int ID)
+        public Image FindImage(string Id)
         {
-            return context.Images.Find(ID);
+            return context.Images.Find(Id);
         }
         public bool Insert(Image model)
         {

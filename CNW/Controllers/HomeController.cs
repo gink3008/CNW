@@ -14,14 +14,18 @@ namespace CNW.Controllers
         
         public ActionResult Index()
         {
-            ProductF model = new ProductF();
-            IEnumerable<Product> sanPhams = model.accessDatabase;
-            return View(sanPhams);
+            return View();
         }
         public ActionResult HeroSection()
         {
-            ProductF productf = new ProductF();
-            IEnumerable<Product> model = productf.accessDatabase;
+            ProductImageF productImageF = new ProductImageF();
+            IEnumerable<Image> model = productImageF.accessDatabase;
+            return PartialView(model);
+        }
+        public ActionResult HomeBody()
+        {
+            //ProductImageF productImageF = new ProductImageF();
+            IEnumerable<ProductDetail> model = new ProductDetailF().accessDatabase;
             return PartialView(model);
         }
     }

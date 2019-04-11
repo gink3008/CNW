@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CNW.Models.Entities>
+﻿@model IEnumerable<CNW.Models.Entities.ProductDetail>
 <section class="product-filter-section">
     <div class="container">
         <div class="section-title">
@@ -17,21 +17,32 @@
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="~@item." alt="">
-                            <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <a href="/Product">
+                                    @foreach (var img in item.Images)
+                                    {
+                                        if (img.Official == true)
+                                        {
+                                            <img src="~/Content/img/@img.url" alt="">
+                                        }
+                                    }
+                                </a>
+                                <div class="pi-links">
+                                    <a href="/Product/Index/@item.Id" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a> <!-- gọi đến controller cart-->
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a> <!-- gọi tới hàm like (chưa thiết kế)-->
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>@item.Product.Price</h6>
+                                <p>@item.Product.Name</p>
                             </div>
                         </div>
-                        <div class="pi-text">
-                            <h6>@item.Product.Price</h6>
-                            <p>@item.Product.Name</p>
-                        </div>
                     </div>
-                </div>
+                
+
             }
 
 

@@ -12,12 +12,12 @@ namespace CNW.Models.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProductDetail()
         {
-            Colors = new HashSet<Color>();
             Images = new HashSet<Image>();
+            Colors = new HashSet<Color>();
             Sizes = new HashSet<Size>();
         }
 
-        [Key]
+        [Required]
         [StringLength(10)]
         public string ProductID { get; set; }
 
@@ -27,13 +27,18 @@ namespace CNW.Models.Entities
 
         public int? Quality { get; set; }
 
+        public bool? Advertise { get; set; }
+
+        [StringLength(10)]
+        public string Id { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
+
         public virtual Product Product { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Color> Colors { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Image> Images { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Size> Sizes { get; set; }
