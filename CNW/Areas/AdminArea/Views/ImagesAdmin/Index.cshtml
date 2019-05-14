@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CNW.Models.Entities.Image>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_layout_admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDetail.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Official)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDetail.ProductID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Official)
+        </td>
+        <td>
+            <a href="/AdminArea/ImagesAdmin/Edit/@item.id">Edit</a> |
+            <a href="/AdminArea/ImagesAdmin/Details/@item.id">Details</a> |
+            <a href="/AdminArea/ImagesAdmin/Delete/@item.id">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

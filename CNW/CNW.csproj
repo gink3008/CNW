@@ -519,9 +519,20 @@
     <Content Include="Areas\AdminArea\Views\PDAdmin\Edit.cshtml" />
     <Content Include="Areas\AdminArea\Views\PDAdmin\Delete.cshtml" />
     <Content Include="Areas\AdminArea\Views\PDAdmin\Create.cshtml" />
+    <Content Include="Areas\AdminArea\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\AdminArea\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ImagesAdmin\Index.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ImagesAdmin\Create.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ImagesAdmin\Details.cshtml" />
+    <Content Include="Areas\AdminArea\Views\ImagesAdmin\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -529,6 +540,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminArea\Controllers\AdminController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\ImagesAdminController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\PDAdminController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
