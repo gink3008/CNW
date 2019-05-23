@@ -19,7 +19,7 @@ namespace CNW.Models.Entities
         public string id { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(20)]
         public string customerID { get; set; }
 
         [Required]
@@ -28,10 +28,7 @@ namespace CNW.Models.Entities
 
         public DateTime? Date { get; set; }
 
-        [StringLength(10)]
-        public string userID { get; set; }
-
-        public virtual User User { get; set; }
+        public virtual Customer Customer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailBill> DetailBills { get; set; }

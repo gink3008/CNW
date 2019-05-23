@@ -25,8 +25,6 @@ namespace CNW.Models.Entities
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Species> Species { get; set; }
         public virtual DbSet<speciesSize> speciesSizes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserAdmin> UserAdmins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -62,11 +60,6 @@ namespace CNW.Models.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<Bill>()
-                .Property(e => e.userID)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Bill>()
                 .HasMany(e => e.DetailBills)
                 .WithRequired(e => e.Bill)
                 .WillCascadeOnDelete(false);
@@ -96,8 +89,14 @@ namespace CNW.Models.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer>()
-                .HasOptional(e => e.User)
-                .WithRequired(e => e.Customer);
+                .Property(e => e.password)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.Bills)
+                .WithRequired(e => e.Customer)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DetailBill>()
                 .Property(e => e.BiLLID)
@@ -217,21 +216,6 @@ namespace CNW.Models.Entities
                 .HasMany(e => e.Sizes)
                 .WithOptional(e => e.speciesSize)
                 .HasForeignKey(e => e.speciesID);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.id)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.username)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.password)
-                .IsFixedLength()
-                .IsUnicode(false);
 
             modelBuilder.Entity<UserAdmin>()
                 .Property(e => e.id)

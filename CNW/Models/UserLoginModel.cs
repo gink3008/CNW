@@ -14,14 +14,14 @@ namespace CNW.Models
         {
             context = new Model1();
         }
-        public bool Login(string username, string password)
+        public int Login(string username, string password)
         {
             object[] sqlParams = new SqlParameter[]
             {
             new SqlParameter("@username",username),
             new SqlParameter("@password",password),
             };
-            var results = context.Database.SqlQuery<bool>("users_login @username, @password", sqlParams).SingleOrDefault();
+            var results = context.Database.SqlQuery<int>("users_login @username, @password", sqlParams).SingleOrDefault();
             return results;
     }
     }
