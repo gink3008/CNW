@@ -14,6 +14,21 @@ namespace CNW.Models
         {
             context = new Model1();
         }
+        public bool Insert(Customer model)
+        {
+            Customer dbCustomer = context.Customers.Find(model.id);
+            if (dbCustomer != null)
+            {
+                return false;
+            }
+            else
+            {
+                context.Customers.Add(model);
+                context.SaveChanges();
+                return true;
+            }
+            return false;
+        }
         public int Login(string username, string password)
         {
             object[] sqlParams = new SqlParameter[]
@@ -23,6 +38,10 @@ namespace CNW.Models
             };
             var results = context.Database.SqlQuery<int>("users_login @username, @password", sqlParams).SingleOrDefault();
             return results;
-    }
+        }
+        public bool checkUserName (string user)
+        {
+            return context.Customers.Count(x => x.id == user) > 0;
+        }
     }
 }

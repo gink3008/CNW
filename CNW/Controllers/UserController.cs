@@ -40,5 +40,40 @@ namespace CNW.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Register(Customer model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserLoginModel();
+                if (dao.checkUserName(model.id))
+                {
+                    ModelState.AddModelError("", "Ten dang nhap da ton tai");
+                }
+                else
+                {
+                    var customer = new Customer();
+                    customer.id = model.id;
+                    customer.Name = model.Name;
+                    customer.password = model.password;
+                    customer.Phone = model.Phone;
+                    customer.Sex = model.Sex;
+                    var result = dao.Insert(model);
+                    if (result)
+                    {
+                        ViewBag.Success = "Dang ky thanh cong";
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Dang ky khong thanh cong");
+                    }
+
+                }
+            }
+            else
+                return View(model);
+            return View(model);
+        }
+
     }
 }
