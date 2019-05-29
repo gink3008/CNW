@@ -9,7 +9,7 @@ namespace CNW.Models.Entities
     [Table("UserAdmin")]
     public partial class UserAdmin
     {
-        [StringLength(20)]
+        [StringLength(50)]
         public string id { get; set; }
 
         [StringLength(10)]

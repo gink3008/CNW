@@ -21,7 +21,7 @@ namespace CNW.Models.Entities
         [StringLength(10)]
         public string nameAdmin { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string positionID { get; set; }
 
         public virtual Posision Posision { get; set; }

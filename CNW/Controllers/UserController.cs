@@ -41,9 +41,9 @@ namespace CNW.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Register(Customer model)
+        public ActionResult Register(User model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var dao = new UserLoginModel();
                 if (dao.checkUserName(model.id))
@@ -58,7 +58,7 @@ namespace CNW.Controllers
                     customer.password = model.password;
                     customer.Phone = model.Phone;
                     customer.Sex = model.Sex;
-                    var result = dao.Insert(model);
+                    var result = dao.Insert(customer);
                     if (result)
                     {
                         ViewBag.Success = "Dang ky thanh cong";

@@ -21,7 +21,7 @@ namespace CNW.Models.Entities
         [StringLength(4)]
         public string characters { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string speciesID { get; set; }
 
         public virtual speciesSize speciesSize { get; set; }

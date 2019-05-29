@@ -31,7 +31,6 @@ namespace CNW.Models.Entities
         {
             modelBuilder.Entity<Admin>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Admin>()
@@ -41,12 +40,10 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<Admin>()
                 .Property(e => e.positionID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Bill>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Bill>()
@@ -66,12 +63,10 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Color>()
                 .Property(e => e.ID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Color>()
@@ -95,12 +90,10 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<DetailBill>()
                 .Property(e => e.BiLLID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<DetailBill>()
                 .Property(e => e.ProductID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<DetailBill>()
@@ -114,7 +107,6 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<Image>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Image>()
@@ -123,12 +115,10 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<Image>()
                 .Property(e => e.ProductID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Posision>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Posision>()
@@ -142,12 +132,10 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.speciesID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
@@ -161,12 +149,10 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<ProductDetail>()
                 .Property(e => e.ProductID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<ProductDetail>()
                 .Property(e => e.Id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<ProductDetail>()
@@ -192,17 +178,14 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<Size>()
                 .Property(e => e.speciesID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Species>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Species>()
                 .Property(e => e.categoryID)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Species>()
@@ -212,7 +195,6 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<speciesSize>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<speciesSize>()
@@ -222,12 +204,10 @@ namespace CNW.Models.Entities
 
             modelBuilder.Entity<UserAdmin>()
                 .Property(e => e.id)
-                .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<UserAdmin>()
                 .Property(e => e.AdminID)
-                .IsFixedLength()
                 .IsUnicode(false);
         }
     }

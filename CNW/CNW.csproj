@@ -573,6 +573,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -595,6 +596,7 @@
     <Compile Include="Models\Entities\Size.cs" />
     <Compile Include="Models\Entities\Species.cs" />
     <Compile Include="Models\Entities\speciesSize.cs" />
+    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\UserAdmin.cs" />
     <Compile Include="Models\ProductDetailF.cs" />
     <Compile Include="Models\ProductImageF.cs" />
@@ -651,7 +653,7 @@
     <Content Include="Views\Cart\showCart.cshtml" />
     <Content Include="Views\Cart\viewtest.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Category\SpecialBody.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

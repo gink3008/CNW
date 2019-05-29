@@ -15,7 +15,7 @@ namespace CNW.Models.Entities
             DetailBills = new HashSet<DetailBill>();
         }
 
-        [StringLength(30)]
+        [StringLength(50)]
         public string id { get; set; }
 
         [StringLength(20)]

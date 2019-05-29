@@ -15,7 +15,7 @@ namespace CNW.Models.Entities
             Sizes = new HashSet<Size>();
         }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string id { get; set; }
 
         [StringLength(30)]

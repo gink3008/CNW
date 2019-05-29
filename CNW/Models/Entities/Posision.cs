@@ -15,7 +15,7 @@ namespace CNW.Models.Entities
             Admins = new HashSet<Admin>();
         }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string id { get; set; }
 
         [StringLength(10)]

@@ -12,8 +12,9 @@ namespace CNW.Controllers
         // GET: Category
         public ActionResult Index(string id)
         {
-            Category category = new CategoryF().Find(id);
-            return View(category);
+            //Category category = new CategoryF().Find(id);
+            //return View(category);
+            return View();
         }
         [ChildActionOnly]
         public ActionResult SlideBar()
@@ -25,9 +26,9 @@ namespace CNW.Controllers
         public ActionResult CategoryBody(string id)
         {
 
-            var products = new ProductF().accessDatabase.ToList();
-            var item = products.Where(x => x.Species.categoryID == id).ToList();
-            if (item.Count > 0)
+            var image = new ProductImageF().accessDatabase.Where(x => x.Official == true).ToList();
+            var item = image.Where(x => x.ProductDetail.Product.Species.Category.id == id).ToList();
+            if ( item.Count > 0)
             {
                 var model = item.Where(x => x.ProductDetail != null).ToList();
                 if(model.Count > 0)
@@ -37,8 +38,8 @@ namespace CNW.Controllers
             }
             else
             {
-                var tryitem = products.Where(x => x.Species.id == id).ToList();
-                var model = item.Where(x => x.ProductDetail != null).ToList();
+                var tryitem = image.Where(x => x.ProductDetail.Product.Species.id == id).ToList();
+                var model = tryitem.Where(x => x.ProductDetail != null).ToList();
                 if (model.Count > 0)
                 {
                     return PartialView(model);

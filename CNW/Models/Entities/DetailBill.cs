@@ -11,7 +11,7 @@ namespace CNW.Models.Entities
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(30)]
+        [StringLength(50)]
         public string BiLLID { get; set; }
 
         [Key]
