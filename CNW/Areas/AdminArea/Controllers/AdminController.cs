@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CNW.Models;
 using CNW.Models.Entities;
+using CNW.Areas.AdminArea.Models;
+using CNW.Models;
 
 namespace CNW.Areas.AdminArea.Controllers
 {

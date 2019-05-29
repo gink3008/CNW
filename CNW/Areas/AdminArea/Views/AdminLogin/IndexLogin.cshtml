@@ -1,8 +1,8 @@
 ﻿
 @{
     ViewBag.Title = "IndexLogin";
-    Layout = null;
 }
+@model CNW.Models.Entities.UserAdmin
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +38,7 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <!--Form Login-->
-                <form class="login100-form validate-form" method="post" action="/User/Login">
+                <form class="login100-form validate-form" method="post" action="/AdminArea/AdminLogin/Login">
                     <span class="login100-form-title p-b-43">
                         Login to continue
                     </span>

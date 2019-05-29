@@ -551,6 +551,7 @@
     <Content Include="Content\register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
     <Content Include="Content\register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
     <Content Include="Content\register\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Areas\AdminArea\Views\AdminLogin\IndexLogin.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -566,9 +567,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminArea\AdminAreaAreaRegistration.cs" />
     <Compile Include="Areas\AdminArea\Controllers\AdminController.cs" />
+    <Compile Include="Areas\AdminArea\Controllers\AdminLoginController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ImagesAdminController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\PDAdminController.cs" />
+    <Compile Include="Areas\AdminArea\Models\AdminLoginModel.cs" />
+    <Compile Include="Areas\AdminArea\Models\SessionHelper.cs" />
+    <Compile Include="Areas\AdminArea\Models\AdminSession.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
@@ -579,6 +584,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminLoginModel.cs" />
     <Compile Include="Models\CategoryF.cs" />
     <Compile Include="Models\DetailBillF.cs" />
     <Compile Include="Models\BillF.cs" />
@@ -604,7 +610,6 @@
     <Compile Include="Models\ProductF.cs" />
     <Compile Include="Models\Session\SessionHelper.cs" />
     <Compile Include="Models\Session\UserSesssion.cs" />
-    <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -663,7 +668,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminArea\Models\" />
     <Folder Include="Areas\AdminArea\Views\ProductDetail\" />
   </ItemGroup>
   <PropertyGroup>
