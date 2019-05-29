@@ -6,14 +6,14 @@ using System.Web;
 
 namespace CNW.Models
 {
-    public class BillModel
+    public class BillF
     {
         private Model1 context = null;
-        public BillModel()
+        public BillF()
         {
             context = new Model1();
         }
-        public IQueryable<Bill> accessDatabase
+        public IEnumerable<Bill> accessDatabase
         {
             get { return context.Bills; }
         }
@@ -31,6 +31,7 @@ namespace CNW.Models
             else
             {
                 context.Bills.Add(model);
+                context.SaveChanges();
                 return true;
             }
             return false;
@@ -40,7 +41,14 @@ namespace CNW.Models
             Bill dbBill = context.Bills.Find(model.id);
             if (dbBill != null)
             {
-               
+                dbBill.customerID = model.customerID;
+                dbBill.CustomerNameOnline = model.CustomerNameOnline;
+                dbBill.CustomerPhoneOnline = model.CustomerPhoneOnline;
+                dbBill.CustomerGenerOnline = model.CustomerGenerOnline;
+                dbBill.CustomerDateOnline = model.CustomerDateOnline;
+                dbBill.Date = model.Date;
+                context.SaveChanges();
+                return true;
 
             }
 

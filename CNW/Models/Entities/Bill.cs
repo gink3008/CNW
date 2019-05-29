@@ -15,18 +15,30 @@ namespace CNW.Models.Entities
             DetailBills = new HashSet<DetailBill>();
         }
 
-        [StringLength(10)]
+        [StringLength(30)]
         public string id { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string customerID { get; set; }
 
-        [Required]
         [StringLength(10)]
         public string paymentMethod { get; set; }
 
         public DateTime? Date { get; set; }
+
+        [StringLength(50)]
+        public string CustomerNameOnline { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? CustomerDateOnline { get; set; }
+
+        public bool? CustomerGenerOnline { get; set; }
+
+        public int? CustomerPhoneOnline { get; set; }
+
+        public string CustomerAddressOnline { get; set; }
+
+        public int? TotalOnBill { get; set; }
 
         public virtual Customer Customer { get; set; }
 

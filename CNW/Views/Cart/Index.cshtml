@@ -1,0 +1,38 @@
+﻿@model CNW.Models.Entities.DetailBill
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cart-section spad">
+    <div class="container">
+        <div class="row">
+            @{ Html.RenderAction("showCart", "Cart"); }
+            <div class="col-lg-4 card-right">
+                <form class="promo-code-form">
+                    <input type="text" placeholder="Enter promo code">
+                    <button>Submit</button>
+                </form>
+                <a href="/Checkout/Index" class="site-btn">Proceed to checkout</a>
+                <a href="" class="site-btn sb-dark">Continue shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

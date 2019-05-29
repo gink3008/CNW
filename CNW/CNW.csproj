@@ -569,6 +569,7 @@
     <Compile Include="Areas\AdminArea\Controllers\ImagesAdminController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\AdminArea\Controllers\PDAdminController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -647,6 +648,10 @@
     <Content Include="Views\User\RegisterTest.cshtml" />
     <Content Include="Views\User\IndexLogin.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Cart\showCart.cshtml" />
+    <Content Include="Views\Cart\viewtest.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Category\SpecialBody.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

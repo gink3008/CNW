@@ -31,6 +31,7 @@ namespace CNW.Models
             else
             {
                 context.DetailBills.Add(model);
+                context.SaveChanges();
                 return true;
             }
             return false;
@@ -40,7 +41,9 @@ namespace CNW.Models
             DetailBill dbDetailBill = context.DetailBills.Find(model.BiLLID, model.ProductID);
             if (dbDetailBill != null)
             {
-               
+                dbDetailBill.quality = model.quality;
+                context.SaveChanges();
+                return true;
 
             }
 

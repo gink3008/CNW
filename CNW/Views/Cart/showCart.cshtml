@@ -1,0 +1,50 @@
+﻿@model List<CNW.Models.Entities.DetailBill>
+<div class="col-lg-8">
+    <div class="cart-table">
+        <h3>Your Cart</h3>
+        <div class="cart-table-warp" style="overflow: hidden; outline: currentcolor none medium;" tabindex="1">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="product-th">Product</th>
+                        <th class="quy-th">Quantity</th>
+                        <th class="size-th">SizeSize</th>
+                        <th class="total-th">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int? total = 0;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="product-col">
+                                    <img src="~/Content/@item.Product.ProductDetail.Images.Where(x => x.Official == true)" alt="">
+                                    <div class="pc-title">
+                                        <h4>@item.Product.Name</h4>
+                                        <p>$@item.Product.Price</p>
+                                    </div>
+                                </td>
+                                <td class="quy-col">
+                                    <div class="quantity">
+                                        <label>@item.quality</label>
+                                    </div>
+                                </td>
+                                <td class="size-col"><h4>Size M</h4></td>
+                                <td class="total-col"><h4>$@(item.Product.Price * item.quality)</h4></td>
+
+                            </tr>
+                            total += item.Product.Price * item.quality;
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="total-cost">
+            <h6>Total <span>$@total</span></h6>
+        </div>
+    </div>
+</div>
+

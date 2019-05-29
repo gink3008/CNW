@@ -6,12 +6,12 @@
             @foreach (var item in Model)
             {
                     <li class="">
-                        <a href="#">@item.Name</a>
+                        <a href="/Category/Index?id=@item.id">@item.Name</a>
                         <ul class="sub-menu">
                             @foreach (var item2 in item.Species)
                             {
-                                <li >
-                                    <a href="#"> @item2.Name <span>(2)</span></a>
+                                <li>
+                                    <a href="/Category/CategoryBody?id=@item2.id"> @item2.Name <span>(@item2.Products.Count)</span></a>
                             </li>
                             }
                         </ul>

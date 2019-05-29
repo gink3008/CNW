@@ -18,7 +18,7 @@ namespace CNW.Models.Entities
         [StringLength(3)]
         public string id { get; set; }
 
-        [StringLength(3)]
+        [StringLength(4)]
         public string characters { get; set; }
 
         [StringLength(10)]

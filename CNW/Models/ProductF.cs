@@ -12,7 +12,7 @@ namespace CNW.Models
         {
             context = new Model1();
         }
-        public List<Product> accessDatabase
+        public IEnumerable<Product> accessDatabase
         {
            get { return context.Products.ToList();}
         }

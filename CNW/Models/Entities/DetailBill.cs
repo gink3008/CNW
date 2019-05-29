@@ -11,7 +11,7 @@ namespace CNW.Models.Entities
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(10)]
+        [StringLength(30)]
         public string BiLLID { get; set; }
 
         [Key]
@@ -22,6 +22,12 @@ namespace CNW.Models.Entities
         public int? totalPrice { get; set; }
 
         public int? quality { get; set; }
+
+        [StringLength(4)]
+        public string size { get; set; }
+
+        [StringLength(10)]
+        public string color { get; set; }
 
         public virtual Bill Bill { get; set; }
 

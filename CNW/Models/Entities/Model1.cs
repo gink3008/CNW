@@ -93,11 +93,6 @@ namespace CNW.Models.Entities
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customer>()
-                .HasMany(e => e.Bills)
-                .WithRequired(e => e.Customer)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<DetailBill>()
                 .Property(e => e.BiLLID)
                 .IsFixedLength()
@@ -107,6 +102,15 @@ namespace CNW.Models.Entities
                 .Property(e => e.ProductID)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<DetailBill>()
+                .Property(e => e.size)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DetailBill>()
+                .Property(e => e.color)
+                .IsFixedLength();
 
             modelBuilder.Entity<Image>()
                 .Property(e => e.id)
@@ -152,9 +156,8 @@ namespace CNW.Models.Entities
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
-                .HasMany(e => e.ProductDetails)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
+                .HasOptional(e => e.ProductDetail)
+                .WithRequired(e => e.Product);
 
             modelBuilder.Entity<ProductDetail>()
                 .Property(e => e.ProductID)

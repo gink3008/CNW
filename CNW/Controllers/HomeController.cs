@@ -19,13 +19,13 @@ namespace CNW.Controllers
         public ActionResult HeroSection()
         {
             ProductImageF productImageF = new ProductImageF();
-            IEnumerable<Image> model = productImageF.accessDatabase;
+            var model = productImageF.accessDatabase.Where(x => x.ProductDetail.Advertise == true).ToList();
             return PartialView(model);
         }
         public ActionResult HomeBody()
         {
             //ProductImageF productImageF = new ProductImageF();
-            IEnumerable<ProductDetail> model = new ProductDetailF().accessDatabase;
+            var model = new ProductDetailF().accessDatabase.ToList();
             return PartialView(model);
         }
     }

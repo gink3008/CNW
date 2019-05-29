@@ -3,12 +3,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Model
+@model CNW.Models.Entities.Category
 <section class="category-section spad">
     <div class="container">
         <div class="row">
             @{Html.RenderAction("SlideBar", "Category");}
-            @RenderPage("CategoryBody.cshtml",Model)
+            @{Html.RenderAction("CategoryBody", "Category");}
         </div>
     </div>
 </section>

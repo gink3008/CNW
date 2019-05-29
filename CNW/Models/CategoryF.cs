@@ -17,9 +17,9 @@ namespace CNW.Models
         {
             get { return context.Categories; }
         }
-        public Category Find(int MaHD)
+        public Category Find(string id)
         {
-            return context.Categories.Find(MaHD);
+            return context.Categories.Find(id);
         }
         public bool Insert(Category model)
         {

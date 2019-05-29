@@ -1,7 +1,7 @@
 ﻿@model CNW.Models.Entities.ProductDetail
 <div class="col-lg-6 product-details">
-    <h2 class="p-title">White peplum top</h2>
-    <h3 class="p-price">$39.90</h3>
+    <h2 class="p-title">@Model.Product.Name</h2>
+    <h3 class="p-price">$@Model.Product.Price</h3>
     <h4 class="p-stock">Available: <span>In Stock</span></h4>
     <div class="p-rating">
         <i class="fa fa-star-o"></i>
@@ -11,7 +11,7 @@
         <i class="fa fa-star-o fa-fade"></i>
     </div>
     <div class="p-review">
-        <a href="">3 reviews</a>|<a href="">Add your review</a>
+        <a href="#">3 reviews</a>|<a href="#">Add your review</a>
     </div>
     <div class="fw-size-choose">
         <p>Size</p>
@@ -25,13 +25,12 @@
     </div>
     <div class="quantity">
         <p>Quantity</p>
-        <div class="pro-qty">
-            <span class="dec qtybtn">-</span>
-            <input type="text" value="1">
-            <span class="inc qtybtn">+</span>
+        <div class="pro-qty"> 
+            <input type="text" value="1" name="Quality">
         </div>
+        <input type="text" value="@Model.ProductID" name="ProductID" />
     </div>
-    <a href="#" class="site-btn">SHOP NOW</a>
+    <a href="/Cart/AddCart?productId=@Model.ProductID&quality=1" class="site-btn">SHOP NOW</a>
     <div id="accordion" class="accordion-area">
         <div class="panel">
             <div class="panel-header" id="headingOne">
